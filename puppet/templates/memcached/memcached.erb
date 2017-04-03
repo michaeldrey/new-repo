@@ -1,0 +1,48 @@
+#  This file is managed by puppet  #
+#  All changes will be over written#
+####################################
+
+# Port to listen on. Default is 11211
+PORT="11211"
+
+# User to run the daemon as.
+USER="memcached"
+
+# Maximum number of connections allowed. Default is 1024
+<%# Dev memcache %>
+<% if tier == "DEV" %>
+MAXCONN="1024"
+
+<%# Staging 2 memcache %>
+<% elsif tier == "STAGING" %>
+MAXCONN="4096"
+
+<%# Prod memcache %>
+<% elsif tier == "PROD" %>
+MAXCONN="9216"
+
+<% else %>
+MAXCONN="4096"
+<% end %>
+
+# Size of the cache. Note that Memcache will not start with the amount specified, however
+# it will slowly build up to it over time (in MB)
+
+<%# Dev memcache %>
+<% if tier == "DEV" %>
+CACHESIZE="12000"
+
+<%# Staging 2 memcache %>
+<% elsif tier == "STAGING" %>
+CACHESIZE="13000"
+
+<%# Prod memcache %>
+<% elsif tier == "PROD" %>
+CACHESIZE="20000"
+
+<% else %>
+CACHESIZE="10000"
+
+<% end %>
+#Other options to be added. -l specifies what IP to listen on. Default is 127.0.0.1
+OPTIONS="-l <%= @ipaddress_eth0 %>"
