@@ -1,3 +1,5 @@
+##Practice arrays and data structures. One of the first projects I made in python 
+
 #things to add
 ##-second ship
 ##- two player

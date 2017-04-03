@@ -1,5 +1,5 @@
 #Quick script to run rsync
-##logs in and uses ssh key to rsync to mirror system in another datacenter. redacked company info such as vm names
+##logs in and uses ssh key to rsync to mirror system in another datacenter. 
 ###Ended up writing a bash script for this and set it as a cron job
 from pexpect import pxssh
 HOST = "<hostname>"

@@ -5,7 +5,8 @@
 
 ##First started scripting using fabric. Was great to get started with but had a lot of limitations
 ##Also didn't know how to read from file so it was a lot of work getting an arry of 100+ vms in here
-## Redacted company info/vms/etc.
+
+
 from fabric.api import env, run, sudo
 import argparse
 
