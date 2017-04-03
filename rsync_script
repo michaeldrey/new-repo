@@ -1,0 +1,19 @@
+#Mike Dreyfus
+##Purpose of script: rsync our repos between remote DC's. Have this as a cron job to execute every 4 hours
+#!/bin/bash 
+
+RSYNC=/usr/bin/rsync 
+TEE=/usr/bin/tee
+TOUCHH=/bin/touch
+SSH=/usr/bin/ssh 
+KEY=/root/.ssh/<localserver>-rsync-key
+RUSER=root
+RHOST=<remote server>
+RPATH=/repo/srv/
+LPATH=/repo/srv
+BWLIMIT=200000
+LOGFILE=/tmp/rsync-`date +%F`
+
+$RSYNC --progress -av -e "$SSH -i $KEY" --bwlimit=$BWLIMIT --delete $LPATH $RUSER@$RHOST:$RPATH > "${LOGFILE}" 2>&1
+
+
